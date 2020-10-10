@@ -25,7 +25,8 @@ if account == 'yes' or account == 'y':
                 else:
                     confirm_password = input("Enter your password again to confirm: ")
                     if password == confirm_password:
-                        users.append({ username: username, password: password })
+                        with open('database.txt', 'a') as db:
+                            db.write('username: ' + username + ', password: ' + password + '\n')
                         print("Account successfully created!")
                         print("users:", users)
                         break
