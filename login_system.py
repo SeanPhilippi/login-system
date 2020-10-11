@@ -1,4 +1,6 @@
+# run program using sudo
 from database import users
+import keyboard
 
 def usernames(users):
     usernames = []
@@ -7,14 +9,30 @@ def usernames(users):
         usernames.append(username)
     return usernames
 
+    
 
 account = input("Would you like to create an account? Answer 'yes' or 'no'.\n")
 if account == 'yes' or account == 'y':
     while True:
         username = input("Enter a username: ")
         
-        if username in usernames(users):
-            print('Username has already been taken')
+        # read database.txt
+        with open('database.txt', 'r', encoding='utf-8-sig') as db:
+            lines = db.readlines()
+            print('lines', lines)
+            taken = False
+            for line in lines:
+                line = line.split(', ')
+                print('line', line)
+                user = line[0][10:]
+                print('user', user)
+                if username == user:
+                    print('Username has already been taken')
+                    taken = True
+                    break
+
+        if taken:
+            continue
         else:
             while True:
                 password = input("Enter a password: ")
@@ -32,6 +50,11 @@ if account == 'yes' or account == 'y':
                         break
                     else:
                         print("Passwords do not match.")
-        break
+                        continue
+            print('Account successfully created!')
+            # print('Press esc to exit')
+            # print('Your username and password will be sent to your email.')
+            # if keyboard.is_pressed('esc'):
+            #    exit()
 elif account == 'no' or 'n':
     exit()
