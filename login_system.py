@@ -1,5 +1,4 @@
 # run program using sudo
-from database import users
 import keyboard
 
 account = input("Would you like to create an account? Answer 'yes' or 'no'.\n")
@@ -40,9 +39,10 @@ if account == 'yes' or account == 'y':
                         print("Passwords do not match.")
                         continue
             print('Account successfully created!')
-            # print('Press esc to exit')
+            print('Press esc to exit')
+            while True:
+                if keyboard.read_key() == 'esc':
+                    exit()
             # print('Your username and password will be sent to your email.')
-            # if keyboard.is_pressed('esc'):
-            #    exit()
 elif account == 'no' or 'n':
     exit()

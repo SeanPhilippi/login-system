@@ -6,3 +6,6 @@ username: cloud, password: password4
 username: groovy, password: password5
 username: bunny, password: password6
 username: hyena, password: password7
+username: kravitch, password: password7
+username: reptile, password: password8
+username: frank, password: password9
